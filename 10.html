@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="frame">
+        <div class="moon">
+            <div class="moonDot m1"></div>
+            <div class="moonDot m2"></div>
+            <div class="moonDot m3"></div>
+            <div class="moonDot m4"></div>
+            <div class="moonDot m5"></div>
+        </div>
+        
+        <div class="hill hh1"></div>
+        <div class="hill hh2"></div>
+        <div class="hill hh3"></div>
+        <div class="hill hh4"></div>
+        <div class="hill hh5"></div>
+
+
+        <div class="drop dd1"></div>
+        <div class="drop dd2"></div>
+        <div class="drop dd3"></div>
+        <div class="drop dd4"></div>
+        <div class="drop dd5"></div>
+        <div class="drop dd6"></div>
+        <div class="drop dd7"></div>
+        <div class="drop dd8"></div>
+        <div class="drop dd9"></div>
+        <div class="drop dd10"></div>
+        <div class="drop dd11"></div>
+        <div class="drop dd12"></div>
+        <div class="drop dd13"></div>
+        <div class="drop dd14"></div>
+        <div class="drop dd15"></div>
+
+
+
+        <div class="temparature">
+            <div class="celcius" style="font-size: 45px;"> 12°
+            </div>
+            <div class="info" style="font-size: 15px;line-height: 25px;"><span>      Wind: E 7 km/h  </span><br>  Humidity: 87%
+            </div>
+            <div class="preview" style="font-size: 15px;line-height: 25px;">
+                <div>
+                    <span>TUE </span>
+                    <span>  &nbsp; 21° / 9°</span>
+
+                </div>
+                <div>
+                    <span>  WED </span>
+                    <span>   &nbsp; 23° / 10°</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+    </div>
+</body>
+</html>
+<style type="text/css">
+    .frame{
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        border-radius: 2px;
+        box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, 0.3);
+        background: #1A2238;
+        color: #394568;
+        overflow: hidden;
+    }
+    .moon{
+        position: absolute;
+        width: 70px;
+        height: 70px;
+        top: 45px;
+        left: 55px;
+        border-radius: 50px;
+        background: #F6EDBD;
+        box-shadow: 0 0 10px 0px #F6EDBD;
+    }
+    .moonDot{
+        position: absolute;
+        width: 11px;
+        height: 11px;
+        top: 9px;
+        left: 28px;
+        border-radius: 10px;
+        background: #ECE1A8;
+    }
+    .m2{
+        top: 12px;
+        left: 7px;
+    }
+    .m3{
+        top: 49px;
+        left: 10px;
+    }
+    .m4{
+        width: 6px;
+        height: 6px;
+        top: 37px;
+        left: 49px;
+    }
+    .m5{
+        top: 24px;
+        left: 61px;
+        width: 6px;
+        height: 6px;
+
+    }
+    .hill{
+        position: absolute;
+        z-index: 2;
+        width: 337px;
+        height: 281px;
+        top: 201px;
+        left: -57px;
+        background: #26314F;
+        border-radius: 50%;
+    }
+    .hh2{
+        top: 197px;
+        left: 177px;
+    }
+    .hh3{
+        top: 310px;
+        left: 109px;
+    }
+    .hh4{
+        top: 221px;
+        left: 63px;
+        background: #303C5D;
+    }
+    .hh5{
+        background: #303C5D;
+        top: 248px;
+        left: -137px;
+    }
+    .drop{
+        position: absolute;
+        z-index: 20;
+        left: 18px;
+        bottom: 30px;
+        width: 8px;
+        height: 8px;
+        background: #7FC1F9;
+        border-radius: 50%;
+        animation: drop 0.9s linear 0.08s infinite;
+    }
+
+    /*@keyframes drop {
+        0% {
+        transform: translate3d(40px, -320px, 0) scaleX(1) scaleY(1) rotate(17deg);
+        }
+        85% {
+            transform: translate3d(0, 0, 0) scaleX(1) scaleY(1) rotate(17deg);
+        }
+        100% {
+            transform: translate3d(0, 0px, 0) scaleX(3) scaleY(0) rotate(0deg);
+        }
+    }*/
+
+
+    .dd2{
+        left: 56px;
+        /* bottom: 90px; */
+        width: 8px;
+        height: 8px;
+        background: #7FC1F9;
+        animation: drop 0.8s linear 1.2s infinite;
+    }
+    .dd3{
+        left: 132px;
+        /* bottom: 90px; */
+        width: 8px;
+        height: 8px;
+        animation: drop 0.8s linear 0.12s infinite;
+        
+    }
+    .dd4{
+        left: 170px;
+        /* bottom: 90px; */
+        width: 8px;
+        height: 8px;
+        animation: drop 0.9s linear 1.32s infinite;
+        
+    }
+    .dd5{
+        left: 208px;
+        /* bottom: 90px; */
+        width: 8px;
+        height: 8px;
+        animation: drop 0.8s linear 0.56s infinite;
+    }
+    .dd6{
+        left: 18px;
+        opacity: 0.6;
+        width: 6px;
+        height: 6px;
+        animation: drop 1.4s linear 0.04s infinite;
+        
+    }
+    .dd7{
+        left: 56px;
+        opacity: 0.6;
+        width: 6px;
+        height: 6px;
+        animation: drop 1.4s linear 2s infinite;
+        
+    }
+    .dd8{
+        left: 170px;
+        opacity: 0.6;
+        width: 6px;
+        height: 6px;
+        -webkit-animation: drop 1.4s linear 2s infinite;
+        animation: drop 1.4s linear 2s infinite;
+        
+    }
+    .dd9{
+        left: 94px;
+        opacity: 0.3;
+        width: 4px;
+        height: 4px;
+        animation: drop 2s linear 1.92s infinite;
+        
+    }
+    .dd10{
+        left: 246px;
+        opacity: 0.3;
+        width: 4px;
+        height: 4px;
+        animation: drop 2s linear 1.6s infinite;
+        
+    }
+    .dd11{
+        left: 270px;
+        opacity: 0.8;
+        width: 10px;
+        height: 10px;
+        animation: drop 2s linear 0s infinite;
+    }
+    .dd12{
+        left: 289px;
+        opacity: 0.6;
+        width: 4px;
+        height: 4px;
+        animation: drop 2s linear 0s infinite;
+        
+    }
+    .dd13{
+        left: 292px;
+        opacity: 1;
+        width: 7px;
+        height: 7px;
+        animation: drop 2s linear 0s infinite;
+        
+    }
+    .dd14{
+        left: 300px;
+        opacity: 1;
+        width: 5px;
+        height: 5px;
+        animation: drop 2s linear 1.92s infinite;
+        
+    }
+    .dd15{
+        left: 310px;
+        /* bottom: 90px; */
+        width: 8px;
+        height: 8px;
+        background: #7FC1F9;
+        animation: drop 1s linear 0s infinite;
+    }
+    .temparature{
+        position: absolute;
+        z-index: 999;
+        width: 400px;
+        height: 90px;
+        bottom: 0px;
+        background: #fff;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    @keyframes drop {
+        0% {
+            /* transform: translateY(-100px) rotate(0deg); */
+            transform: translateY(-300px);
+        }
+        /* 100% 
+        {
+            transform: translateY(calc(100vh + 100px)) rotate(720deg);
+        } */
+    }
+</style>

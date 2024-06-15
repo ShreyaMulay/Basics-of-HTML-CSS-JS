@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="frame">
+        <div class="half1">
+            <div class="leftShoes">
+
+            </div>
+            <div class="rightShoes">
+
+            </div>
+        </div>
+        <div class="half2"></div>
+    </div>
+</body>
+</html>
+<style>
+     .frame{
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        border-radius: 2px;
+        box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, 0.3);
+        background: #232323;
+        /* color: #394568; */
+        overflow: hidden;
+    }
+    .half1{
+        position: absolute;
+        width: 400px;
+        height: 280px;
+        border-radius: 2px;
+        box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, 0.3);
+        background: radial-gradient(ellipse at center, #f6e8d7 0%, #dabe9b 100%);
+        overflow: hidden;
+    }
+   .leftShoes{
+        position: absolute;
+        width: 151px;
+        height: 128px;
+        left: 50px;
+        bottom: 10px;
+        background: url(https://100dayscss.com/codepen/doc-martens.svg);
+        animation: shoes1 3s linear 0s infinite;
+
+   }
+   .rightShoes{
+        position: absolute;
+        width: 151px;
+        height: 128px;
+        right: 50px;
+        bottom: 10px;
+        background: url(https://100dayscss.com/codepen/doc-martens.svg);
+        animation: shoes2 3s linear 0s infinite;
+
+   }
+   @keyframes shoes1 {
+        0% {
+            transform: rotate(50deg) translateY(-10px) translateX(10px);
+        }
+        50% {
+            transform: rotate(-50deg) translateY(20px) translateX(80px)
+        }
+        100% {
+            transform: rotate(50deg) translateY(-10px) translateX(10px);
+        }
+       
+    }
+    @keyframes shoes2 {
+        0% {
+            transform: rotate(-50deg) translateY(0px) translateX(0);
+        }
+        50% {
+            transform: rotate(50deg) translateY(10px) translateX(-5px);
+        }
+        100% {
+            transform: rotate(-50deg) translateY(0px) translateX(0);
+        }
+       
+    }
+</style>

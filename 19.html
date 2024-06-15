@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="frame">
+        <h2 style="text-align: center;">Dictionary App</h2>
+
+        <div style="display:flex;align-items: center;justify-content: center;flex-direction: column;">
+            <input type="text" id="myText" placeholder="Enter Word to search">
+            <button id="myButton" type="button" onclick="searchWord()">Search</button>
+        </div>
+        <div id="info"></div>
+    </div>
+
+    <script>
+        async function searchWord() 
+        {
+            let word = document.getElementById('myText').value;
+            let searchedWord = document.getElementById('info')
+            console.log(word);
+
+            searchedWord.innerHTML = '';
+            if(word == '')
+            {
+                alert('Please enter word here');
+                return;
+            }
+            else
+            {
+                let response = await fetch("http://api.dictionaryapi.dev/api/v2/entries/en/"+word);
+                let data = await response.json();
+
+                if (!response.ok) {
+                    alert("Error : Word not found");
+                    return
+                }
+
+                console.log(data[0].meanings[0].definitions[0].definition)
+                // searchedWord.innerHTML = data[0].meanings[0].definitions[0].definition;
+
+                let meanings = data[0].meanings[0].definitions
+                for(let i = 0; i < meanings.length; i++)
+                {
+                    // console.log("::meanings",meanings[i].definition)
+                    searchedWord.innerHTML += '<li>' + meanings[i].definition +'</li>';
+                        
+                    // Create a new SpeechSynthesisUtterance instance
+                    const utterance = new SpeechSynthesisUtterance(meanings[i].definition);
+                    
+                    // Set properties (optional)
+                    utterance.lang = 'en-US';
+                    utterance.pitch = 1; // Range between 0 and 2      // void of girl or man
+                    utterance.rate = 1;  // Range between 0.1 and 10   //here is  speed of voise
+                    utterance.volume = 1; // Range between 0 and 1    // volume
+        
+                    // Speak the text
+                    window.speechSynthesis.speak(utterance);
+
+                }
+              
+            }
+        }
+    </script>
+</body>
+</html>
+<style type="text/css">
+    .frame{
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        border-radius: 2px;
+        box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, 0.3);
+        background: linear-gradient(to top right, #3A92AF 0%, #5CA05A 100%);
+        overflow: hidden;
+        /* text-align: center; */
+    }
+    #myText{
+        border-width: 1px 0px;
+        border-top-style: solid;
+        border-top-color: rgb(221, 221, 221);
+        border-bottom-color: rgb(221, 221, 221);
+        outline: unset;
+        height: 38px;
+        transition: all .3s;
+        width: 73%;
+        border-radius: 7px;
+        text-align: center;
+    }
+    #myButton{
+        background: black;
+        border-radius: 5px;
+        color: rgb(255, 255, 255);
+        min-width: 90px;
+        border: none;
+        height: 38px;
+        font-size: .95rem;
+        transition: all .3s;
+        margin-top: 15px;
+        cursor: pointer;
+    }
+    #info{
+        overflow: auto;
+        height: 220px;
+        margin-left: 15px;
+    }
+</style>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO</title>
+</head>
+<body>
+   
+    <div class="center">
+        <div class="header">
+            <h3>My TODO List</h3>
+            <input type="text" name="addList" id="addList" placeholder="Enter task to add"/>
+            <button id="addTask">Add Task</button>
+        </div>
+      
+        <div id="appendDiv"></div>
+    </div>
+
+
+    <script>
+        let addTask = document.getElementById("addTask");
+        
+        addTask.addEventListener("click",function(e) {
+            let newTask = document.getElementById("addList")
+            let newTaskToAppend = document.getElementById("appendDiv")
+            let newDiv = document.createElement("div");
+            newDiv.id = `myBrandnewDiv1`;
+
+
+            if(newTask.value && newTask.value!=''){
+                newDiv.textContent = newTask.value;
+                newTaskToAppend.appendChild(newDiv)
+                newTask.value = ''
+
+                let span = document.createElement("span");
+                let txt = document.createTextNode("close");
+                span.className = "close";
+                span.appendChild(txt);
+                newTaskToAppend.appendChild(span)
+
+                var current_tasks = document.querySelectorAll(".close");
+                for(var i=0; i<current_tasks.length; i++){
+                    current_tasks[i].onclick = function(){
+                        this.parentNode.remove();
+                    }
+                }
+                
+
+            }
+            else{
+                console.log("::enter some list to add")
+            }
+
+        });
+
+    </script>
+</body>
+</html>
+
+<style type="text/css">
+    .center{
+        position: absolute;
+        width: 50%;
+        height: 50%;
+        box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, 0.3);
+        background: #b4d9ef;
+        inset: 25%;
+    }
+    .header{
+        background-color: #f44336;
+        padding: 30px 40px;
+        color: white;
+        text-align: center;
+    }
+    h3{
+        font-size: 30px;
+        font-weight: 700;
+    }
+    #addList{
+        width: 50%;
+        padding: .5em .7em;
+        background-color: #fff;
+        border-radius: 4px;
+        color: #363636;
+        height: 30px;
+        border: 1px solid #dbdbdb;
+    }
+    #addTask{
+        width: 28%;
+        padding: .5em .7em;
+        background-color: #b4d9ef;
+        border-radius: 4px;
+        color: black;
+        height: 46px;
+        border: 1px solid #dbdbdb;
+    }
+    #myBrandnewDiv1{
+        padding: 12px 8px 12px 40px;
+        background: #eee;
+    }
+    .close{
+        cursor: pointer;
+    }
+</style>

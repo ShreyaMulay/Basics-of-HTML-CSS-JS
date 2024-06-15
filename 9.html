@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="number" placeholder="Enter time" class="inputTime">
+    <button type="submit" onclick="startTimer()" class="buttonStart">Start Timer</button>
+    <div class="showTimer">0</div>
+    <script>
+        function startTimer(){
+
+            let inputTime = document.querySelector('.inputTime');
+            let showTimer = document.querySelector('.showTimer');
+
+            if(inputTime < 0){
+                console.log("Enter Postitive value ")
+                return            
+            }
+            else
+            {
+                console.log("inputTime",inputTime.value)
+                const countdown  = setInterval(() => {
+
+                    if(inputTime.value <= 0){
+                        clearInterval(countdown);
+                        showTimer.textContent = "Times Up"
+                    }
+                    else{
+                        showTimer.textContent = inputTime.value;
+                        inputTime.value --;
+                    }
+                }, 1000)
+
+
+
+            }
+
+
+        }
+    </script>
+</body>
+</html>

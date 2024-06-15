@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="frame">
+        <h2>Weather App</h2>
+        Enter City name : <input type="text" id="myCity" placeholder="Enter City name" />
+        <button type="button" id="myButton" class="btn btn-primary" onclick="GetWeather()">Get Weather</button>
+        <div id="weather-result"></div>
+
+    </div>
+    <script>
+
+        function GetWeather() 
+        {
+            let city = document.getElementById('myCity').value;
+            if(city == '')
+            {
+                alert('Please enter city name');
+                return ;
+            }
+            else
+            {
+                let response = await fetch("http://api.dictionaryapi.dev/api/v2/entries/en/"+word);
+                let data = await response.json();           
+            }
+
+
+        }
+    </script>
+    
+</body>
+</html>
+<style type="text/css">
+    .frame{
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        border-radius: 2px;
+        box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, 0.3);
+        background: linear-gradient(to top right, #3A92AF 0%, #5CA05A 100%);
+        overflow: hidden;
+        text-align: center;
+    }
+
+</style>

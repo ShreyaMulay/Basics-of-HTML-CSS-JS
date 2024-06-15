@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="frame">
+        <h2 style="text-align: center;">Password Generator</h2>
+        <div style="margin-left: 30px;font-size: 16px;text-align: left;">
+            Password Length: <input type="number" name="password" id="passLength"><br />
+            <input type="checkbox" id="upper"> Includes Uppercases <br />
+            <input type="checkbox" id="lower"> Includes lowercases <br />
+            <input type="checkbox" id="number"> Includes numbers <br />
+            <input type="checkbox" id="symbol"> Includes Sybmols <br />
+        </div>
+        <button type="button" class="btn" id="myButton" onclick="GetPassword()">Generate Password</button>
+
+
+        <div id="generatedPassword"></div>
+
+    </div>
+    <script>
+        function GetPassword() 
+        {
+            let passLength = document.getElementById("passLength").value;
+            let password = document.getElementById("generatedPassword");
+
+            password = '';
+
+            let isUpperCase = document.getElementById("upper").checked;
+            let isLowerCase = document.getElementById("lower").checked;
+            let isNumber = document.getElementById("number").checked;
+            let isSymbol = document.getElementById("symbol").checked;
+
+            let lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
+            let uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            let numberChars = '0123456789';
+            let symbbolChars = '!@#$%^&*()`*+,-./:;<=>?@';
+
+            // console.log("isUpperCase",isUpperCase)
+            // console.log("isLowerCase",isLowerCase)
+            // console.log("isNumber",isNumber)
+            // console.log("isSymbol",isSymbol)
+            
+            let upr = isUpperCase ? uppercaseChars : '';
+            let lwr = isLowerCase ? lowercaseChars : '';
+            let nbr = isNumber ? numberChars :'';
+            let sym = isSymbol ? symbbolChars : '';
+
+            let allChars;
+
+            allChars= upr + lwr + nbr + sym;
+
+            // console.log("allChars",allChars);
+
+            for (let i = 0; i < passLength; i++) 
+            {
+                let randomIndex = Math.floor(Math.random() * allChars.length);
+                // console.log(randomIndex)
+                password += allChars.charAt(randomIndex);
+            }
+
+            // console.log("::password",password);
+            document.getElementById("generatedPassword").innerHTML = password;
+
+
+        }
+         
+
+    </script>
+</body>
+</html>
+<style type="text/css">
+    .frame{
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        border-radius: 2px;
+        box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, 0.3);
+        background: linear-gradient(to top right, #3A92AF 0%, #5CA05A 100%);
+        overflow: hidden;
+        text-align: center;
+    }
+    #myButton{
+        background: black;
+        border-radius: 5px;
+        color: rgb(255, 255, 255);
+        min-width: 90px;
+        border: none;
+        height: 38px;
+        font-size: .95rem;
+        transition: all .3s;
+        margin-top: 15px;
+        cursor: pointer;
+    }
+    #generatedPassword{
+        color: white;
+        margin-top: 10px;
+    }
+    #passLength{
+        border-width: 1px 0px;
+        border-top-style: solid;
+        border-top-color: rgb(221, 221, 221);
+        border-bottom-color: rgb(221, 221, 221);
+        outline: unset;
+        height: 20px;
+        transition: all .3s;
+        width: 10%;
+        border-radius: 4px;
+        text-align: center;
+    }
+</style>
