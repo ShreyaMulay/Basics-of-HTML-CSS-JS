@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button class="emoji-button">😊</button>
+        <button class="emoji-button">😂</button>
+        <button class="emoji-button">❤️</button>
+        <button class="emoji-button">👍</button>
+        <button class="emoji-button">🤫</button>
+        <button class="emoji-button">😳</button>
+        <button class="emoji-button">😎</button>
+
+      </div>
+      <div id="reactions-container"></div>
+      <script>
+        document.querySelectorAll('.emoji-button').forEach(button => {
+          button.addEventListener('click', () => {
+            const reaction = {
+              id: Date.now(),
+              emoji: button.textContent,
+              position: {
+                x: Math.random() * (window.innerWidth - 50) // Adjust width to avoid overflow
+              }
+            };
+            displayReaction(reaction);
+          });
+        });
+    
+        function displayReaction(reaction) {
+          const reactionElement = document.createElement('div');
+          reactionElement.textContent = reaction.emoji;
+          reactionElement.style.left = `${reaction.position.x}px`;
+          reactionElement.classList.add('reaction');
+          document.getElementById('reactions-container').appendChild(reactionElement);
+          setTimeout(() => {
+            reactionElement.remove();
+          }, 3000);
+        }
+      </script>
+</body>
+</html>
+<style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+    .emoji-button {
+      font-size: 2em;
+      margin: 0.5em;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+    }
+    #reactions-container {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      pointer-events: none; /* Disable pointer events to allow clicking on buttons */
+    }
+    .reaction {
+      font-size: 2em;
+      position: absolute;
+      bottom: 0;
+      animation: moveUp 3s forwards, fadeout 3s forwards;
+    }
+    @keyframes moveUp {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-100vh); }
+    }
+    @keyframes fadeout {
+      0% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+  </style>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="frame">
+        <div class="card">
+            <div class="card-body">
+              <h1 class="card-title title">Friday</h1>
+              <h5 class="card-title subtitle">March 4, 2016</h5>
+              <hr />
+              <p class="card-text">
+                <table style="width: -webkit-fill-available;">
+                    <tr>
+                      <td>
+                            <label class="circular-checkbox task">
+                            <input type="checkbox">
+                            <span></span>
+                            <p class="task-label">Create a list</p>
+
+                            </label>
+                      </td>
+                    </tr>
+                    <tr>
+                        <td> 
+                            <label class="circular-checkbox task">
+                            <input type="checkbox">
+                            <span></span>
+                            <p class="task-label">Complete first task</p>
+
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> 
+                            <label class="circular-checkbox task">
+                            <input type="checkbox">
+                            <span></span>
+                            <p class="task-label">Write some CSS code</p>
+
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> 
+                            <label class="circular-checkbox task">
+                            <input type="checkbox">
+                            <span></span>
+                            <p class="task-label">Amaze the World</p>
+
+                        </label>
+                        </td>
+                    </tr>
+                 
+                  </table>
+              </p>
+            </div>
+          </div>
+    </div>
+</body>
+</html>
+<style type="text/css">
+
+.frame{
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        border-radius: 2px;
+        box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, 0.3);
+        background: linear-gradient(to top right, #FDA231 0%, #FDCA31 100%);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #497081;
+        font-family: "Open Sans", Helvetica, sans-serif;
+}
+.card{
+    width: 240px;
+    height: 280px;
+    
+}
+.title{
+    font-weight: 550;
+    font-size: 20px;
+    text-align: center;
+    color: #497081;
+}
+.subtitle{
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    color: #497081;
+}
+.circular-checkbox {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+.circular-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.circular-checkbox span {
+    height: 20px;
+    width: 20px;
+    color: white;
+    border: 2px solid #497081;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.circular-checkbox span:after {
+    content: "";
+    position: absolute;
+    display: none;
+    right: 8px;
+    top: 4px;
+    width: 5px;
+    height: 10px;
+    border: solid #C8D4D9;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.circular-checkbox input:checked + span:after {
+    display: block;
+    animation: blur 0.5s;
+}
+.circular-checkbox input:checked + span {
+    /* background-color: #4caf50;  */
+    border-color: transparent; 
+
+}
+
+@keyframes blur {
+    0% {
+        filter: blur(0);
+    }
+    50% {
+        filter: blur(4px);
+    }
+    100% {
+        filter: blur(0);
+    }
+}
+.task{
+    /* float: left; */
+    font-size: 13px;
+    line-height: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+
+}
+ /* Text blur animation */
+ .circular-checkbox input:checked + span + .task-label {
+    /* filter: blur(1px); */
+    opacity: 0.5;
+    transition: filter 0.3s ease-in-out;
+}
+/* .circular-checkbox input:checked  + .circular-checkbox{
+    filter: blur(1px) !important;
+} */
+</style>
