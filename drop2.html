@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Sortable Demo</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/smoothness/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
+  <style>
+    #sortable {
+      width: 100%;
+      padding: 0;
+      border: 1px solid #ccc;
+    }
+    .ui-sortable-handle {
+      width: 300px;
+      margin: 5px auto; /* Center the items within the list */
+      padding: 10px;
+      border: 1px solid #ddd;
+      background-color: red;
+      cursor: move;
+    }
+    .ui-sortable-placeholder {
+      visibility: visible !important;
+      background: #e1e1e1;
+      border: 1px dashed #ccc;
+      width: 300px; /* Match the width of the sortable handle */
+      height: 40px; /* Adjust to match the height of list items */
+      margin: 5px auto;
+    }
+  </style>
+</head>
+<body>
+ 
+<ul id="sortable">
+  <li class="ui-sortable-handle">Item 1</li>
+  <li class="ui-sortable-handle">Item 2</li>
+  <li class="ui-sortable-handle">Item 3</li>
+  <li class="ui-sortable-handle">Item 4</li>
+  <li class="ui-sortable-handle">Item 5</li>
+</ul>
+ 
+<script>
+  $("#sortable").sortable({
+    helper: "clone",
+    tolerance: "pointer",
+    containment: "document",
+    placeholder: "ui-sortable-placeholder",
+    forcePlaceholderSize: true
+  });
+</script>
+ 
+</body>
+</html>

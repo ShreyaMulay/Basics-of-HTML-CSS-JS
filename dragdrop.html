@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reorder Slides</title>
+  <style>
+    .slide {
+      width: 300px;
+      height: 200px;
+      background-color: lightblue;
+      margin: 10px;
+      text-align: center;
+      line-height: 200px;
+      cursor: move;
+      position: relative;
+    }
+    #slide-container {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 10px;
+      border: 2px solid #ddd;
+      box-sizing: border-box;
+    }
+    .placeholder {
+      background-color: lightgray;
+      border: 2px dashed #ddd;
+      height: 200px;
+      width: 300px;
+      margin: 10px;
+      box-sizing: border-box;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+
+<div id="slide-container">
+  <div class="slide" draggable="true">Slide 1</div>
+  <div class="slide" draggable="true">Slide 2</div>
+  <div class="slide" draggable="true">Slide 3</div>
+  <div class="slide" draggable="true">Slide 4</div>
+</div>
+
+<script>
+  const container = document.getElementById('slide-container');
+  let draggedItem = null;
+  let placeholder = document.createElement('div');
+
+  placeholder.className = 'placeholder';
+
+  container.addEventListener('dragstart', (e) => {
+    draggedItem = e.target;
+    e.target.style.opacity = '0.5';
+    // Insert placeholder after dragged item
+    container.appendChild(placeholder);
+  });
+
+  container.addEventListener('dragend', (e) => {
+    e.target.style.opacity = '';
+    container.removeChild(placeholder);
+    draggedItem = null;
+  });
+
+  container.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    const target = e.target;
+    if (target && target.classList.contains('slide') && target !== draggedItem) {
+      const rect = target.getBoundingClientRect();
+      const offset = (rect.top + rect.bottom) / 2;
+      const cursorPosition = e.clientY;
+      if (cursorPosition > offset) {
+        target.after(placeholder);
+      } else {
+        target.before(placeholder);
+      }
+    }
+  });
+
+  container.addEventListener('drop', (e) => {
+    e.preventDefault();
+    if (draggedItem && placeholder.parentNode) {
+      placeholder.parentNode.insertBefore(draggedItem, placeholder);
+      container.removeChild(placeholder);
+    }
+  });
+</script>
+
+</body>
+</html>
